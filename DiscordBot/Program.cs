@@ -81,7 +81,7 @@ namespace DiscordBot
 
         private async Task Client_Ready()
         {
-            await Client.SetGameAsync("Fighters in PSN/PC/XBOX");
+            await Client.SetGameAsync("!help for more info");
         }
 
         private async Task Client_Log(LogMessage message)
