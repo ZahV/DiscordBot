@@ -40,7 +40,7 @@ namespace DiscordBot
 
 
             string token = "";
-            using (var Stream = new FileStream(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location).Replace(@"bin\Debug\netcoreapp2.1", @"Data\Token.txt"), FileMode.Open, FileAccess.Read))
+            using (var Stream = new FileStream(@"Data\Token.txt", FileMode.Open, FileAccess.Read))
             using (var ReadToken = new StreamReader(Stream))
             {
                 token = ReadToken.ReadToEnd();
@@ -84,11 +84,13 @@ namespace DiscordBot
             await Client.SetGameAsync("!help for more info");
         }
 
+
+#pragma warning disable 1998
         private async Task Client_Log(LogMessage message)
         {
             Console.WriteLine($"{DateTime.Now} at {message.Source}] {message.Message}");
         }
-
+#pragma warning restore 1998
     }
 
 

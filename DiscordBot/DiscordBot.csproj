@@ -28,4 +28,13 @@
     <Folder Include="Resources\Extensions\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Data\Database.sqlite">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\Token.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
