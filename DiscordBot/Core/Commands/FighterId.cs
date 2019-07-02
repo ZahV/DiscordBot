@@ -6,9 +6,26 @@ namespace DiscordBot.Core.Commands
 {
     public class PSNtag : ModuleBase<SocketCommandContext>
     {
-        [Group("psntag"), Alias("psntags"), Summary("Group to manage PSNtags")]
+        [Group("psn"), Alias("psntags"), Summary("Group to manage PSNtags")]
         public class PSNtagsGroup : ModuleBase<SocketCommandContext>
         {
+
+            [Command(""), Alias("me", "my"), Summary("Shows your current PSN tag")]
+            public async Task Me(IUser User = null)
+            {
+
+                if (User == null)
+                {
+                    await Context.Channel.SendMessageAsync(
+                        $"{Context.User}, your current PSN tag is {Data.Data.GetIds(Context.User.Id)}");
+                }
+                else
+                {
+                    await Context.Channel.SendMessageAsync(
+                        $"{User.Username}'s PSN Tag is : {Data.Data.GetIds(User.Id)}");
+                }
+            }
+
 
             [Command("add"), Alias("add"), Summary("Used to set a Tag")]
             public async Task Add(IUser user = null, string name = "")
