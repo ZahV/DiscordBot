@@ -51,9 +51,32 @@ namespace DiscordBot
             await Task.Delay(-1);
         }
 
-        private async Task Client_MessageReceived(SocketMessage arg)
+        private async Task Client_MessageReceived(SocketMessage MessageParam)
         {
-            //Commands here  
+            var message = MessageParam as SocketUserMessage;
+            var context = new SocketCommandContext(Client, message);
+
+            if (context.Message == null || context.Message.Content == "")
+            {
+                return;
+            }
+
+            if (context.User.IsBot)
+            {
+                return;
+            }
+
+            int argPos = 0;
+            if (!(message.HasStringPrefix("!", ref argPos) || message.HasMentionPrefix(Client.CurrentUser, ref argPos)))
+            {
+                return;
+            }
+
+            var result = await Commands.ExecuteAsync(context, argPos, null);
+            if (!result.IsSuccess)
+            {
+                Console.WriteLine($"{DateTime.Now} at Commands] Something went wrong with executing a command. Text: {context.Message.Content} | Error: {result.ErrorReason} ");
+            }
         }
 
         private async Task Client_Ready()
