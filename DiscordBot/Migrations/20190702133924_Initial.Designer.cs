@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DiscordBot.Migrations
 {
     [DbContext(typeof(SqliteDbContext))]
-    [Migration("20190702113808_Initial")]
+    [Migration("20190702133924_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -16,6 +16,18 @@ namespace DiscordBot.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
+
+            modelBuilder.Entity("DiscordBot.Resources.PCtag", b =>
+                {
+                    b.Property<ulong>("UserId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("PCtags");
+                });
 
             modelBuilder.Entity("DiscordBot.Resources.PSNtag", b =>
                 {
@@ -27,6 +39,18 @@ namespace DiscordBot.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("PSNtags");
+                });
+
+            modelBuilder.Entity("DiscordBot.Resources.XBOXtag", b =>
+                {
+                    b.Property<ulong>("UserId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("XBOXtags");
                 });
 #pragma warning restore 612, 618
         }

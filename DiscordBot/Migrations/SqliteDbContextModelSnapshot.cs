@@ -15,6 +15,18 @@ namespace DiscordBot.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
 
+            modelBuilder.Entity("DiscordBot.Resources.PCtag", b =>
+                {
+                    b.Property<ulong>("UserId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("PCtags");
+                });
+
             modelBuilder.Entity("DiscordBot.Resources.PSNtag", b =>
                 {
                     b.Property<ulong>("UserId")
@@ -25,6 +37,18 @@ namespace DiscordBot.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("PSNtags");
+                });
+
+            modelBuilder.Entity("DiscordBot.Resources.XBOXtag", b =>
+                {
+                    b.Property<ulong>("UserId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("XBOXtags");
                 });
 #pragma warning restore 612, 618
         }
