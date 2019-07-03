@@ -187,7 +187,7 @@ namespace DiscordBot.Core.Commands
             else
             {
                 await Context.Channel.SendMessageAsync(
-                    $"{User.Username}'s current IDs are : PC - {Data.Data.GetPC(User.Id)}\nPSN - {Data.Data.GetPsn(Context.User.Id)}\nXbox - {Data.Data.GetXbox(Context.User.Id)}");
+                    $"{User.Username}'s current IDs are : PC - {Data.Data.GetPC(User.Id)}\nPSN - {Data.Data.GetPsn(User.Id)}\nXbox - {Data.Data.GetXbox(User.Id)}");
             }
         }
     }
